@@ -11,6 +11,13 @@
                 <filtering>true</filtering>
                 <directory>src/main/resources</directory>
             </resource>
+            <resource>
+                <filtering>true</filtering>
+                <directory>services/hrdb/src</directory>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </resource>
         </resources>
         <finalName>WaveMakerSample</finalName>
         <filters>
@@ -78,7 +85,9 @@
                             <goal>add-source</goal>
                         </goals>
                         <configuration>
-                            <sources/>
+                            <sources>
+                                <source>services/hrdb/src</source>
+                            </sources>
                         </configuration>
                     </execution>
                 </executions>
@@ -176,6 +185,29 @@
                     </execution>
                 </executions>
             </plugin>
+            
+            <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-dependency-plugin</artifactId>
+            <version>2.3</version>
+            <executions>
+                <execution>
+                    <phase>package</phase>
+                    <goals><goal>copy</goal></goals>
+                    <configuration>
+                        <artifactItems>
+                            <artifactItem>
+                                <groupId>com.github.jsimone</groupId>
+                                <artifactId>webapp-runner</artifactId>
+                                <version>8.0.30.2</version>
+                                <destFileName>webapp-runner.jar</destFileName>
+                            </artifactItem>
+                        </artifactItems>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+            
         </plugins>
     </build>
     <profiles>
@@ -253,6 +285,11 @@
             <artifactId>servlet-api</artifactId>
             <version>2.5</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>2.3.3</version>
         </dependency>
     </dependencies>
     <dependencyManagement>

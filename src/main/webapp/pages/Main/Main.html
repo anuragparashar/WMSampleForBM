@@ -1,11 +1,50 @@
 <wm-page data-ng-controller="MainPageController" name="mainpage" pagetitle="Main">
     <wm-header content="header" name="header" height="auto"></wm-header>
-    <wm-top-nav name="topnav" content="topnav"></wm-top-nav>
     <wm-content name="content">
-        <wm-left-panel columnwidth="2" name="leftpanel" content="leftnav"></wm-left-panel>
-        <wm-page-content columnwidth="8" paddingleft="15" paddingright="15" name="mainContent">
+        <wm-page-content columnwidth="12" name="mainContent" padding="unset 15px">
+            <wm-livelist listclass="list-group" template="true" itemsperrow="xs-1 sm-2 md-4 lg-6" class="list-card" dataset="bind:Variables.HrdbEmployeeData.dataSet" navigation="Pager" name="livelist2">
+                <wm-listtemplate layout="media" name="listtemplate2">
+                    <wm-card name="Picture" picturesource="bind:Variables.HrdbEmployeeData.dataSet.picurl">
+                        <wm-card-content name="card_content2">
+                            <wm-label caption="bind:Variables.HrdbEmployeeData.dataSet.firstname" name="Name" margin="0px unset unset unset" fontunit="em" class="h4" color="#000" whitespace="nowrap"></wm-label>
+                            <wm-layoutgrid columns="2" name="layoutgrid2">
+                                <wm-gridrow name="gridrow4">
+                                    <wm-gridcolumn colwidth="6" columnwidth="2" horizontalalign="left" name="gridcolumn7">
+                                        <wm-icon iconclass="wi wi-contact-mail" iconsize="15pt" class="text-muted" name="icon4"></wm-icon>
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn colwidth="6" padding="unset unset unset 1.25em" name="gridcolumn8">
+                                        <wm-label name="ID" caption="ID" fontunit="em" class="text-muted p" whitespace="nowrap"></wm-label>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                                <wm-gridrow name="gridrow5">
+                                    <wm-gridcolumn colwidth="6" columnwidth="2" horizontalalign="left" name="gridcolumn9">
+                                        <wm-icon iconclass="wi wi-user" iconsize="15pt" class="text-muted" name="icon5"></wm-icon>
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn colwidth="6" padding="unset unset unset 1.25em" name="gridcolumn10">
+                                        <wm-label name="JobTitle" caption="bind:Variables.HrdbEmployeeData.dataSet.jobTitle" fontunit="em" class="text-muted p"></wm-label>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                                <wm-gridrow name="gridrow6">
+                                    <wm-gridcolumn colwidth="6" columnwidth="2" horizontalalign="left" name="gridcolumn11">
+                                        <wm-icon iconclass="wi wi-dashboard" iconsize="15pt" class="text-muted" name="icon6"></wm-icon>
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn colwidth="6" padding="unset unset unset 1.25em" name="gridcolumn12">
+                                        <wm-label name="Department" caption="bind:Variables.HrdbEmployeeData.dataSet.department.name" fontunit="em" class="text-muted"></wm-label>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                            </wm-layoutgrid>
+                        </wm-card-content>
+                        <wm-card-footer horizontalalign="center" name="card_footer2">
+                            <wm-buttongroup class="btn-group-justified" horizontalalign="center" name="buttongroup2">
+                                <wm-anchor class="btn btn-transparent text-muted" caption="" iconclass="wi wi-mail" fontsize="18" fontunit="pt" name="anchor4"></wm-anchor>
+                                <wm-anchor class="btn btn-transparent" caption="" iconclass="wi wi-call" fontsize="18" fontunit="pt" name="anchor5"></wm-anchor>
+                                <wm-anchor class="btn btn-transparent" caption="" iconclass="wi wi-location-on" fontsize="18" fontunit="pt" name="anchor6"></wm-anchor>
+                            </wm-buttongroup>
+                        </wm-card-footer>
+                    </wm-card>
+                </wm-listtemplate>
+            </wm-livelist>
         </wm-page-content>
-        <wm-right-panel columnwidth="2" name="rightpanel" content="rightnav"></wm-right-panel>
     </wm-content>
     <wm-footer name="footer" content="footer"></wm-footer>
 </wm-page>
