@@ -21,3 +21,5 @@ services/*/src/servicedefs/*-service-definitions.json
 *_vk.hbm.xml
 !src/main/webapp/WEB-INF/data/*.log
 src/main/webapp/pages/*/page.min.html
+src/main/webapp/WEB-INF/context.xml
+dataObjects.json

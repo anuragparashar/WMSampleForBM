@@ -98,7 +98,7 @@ public class DepartmentController {
     @ApiOperation(value = "Returns the list of Department instances matching the search criteria.")
     @RequestMapping(value = "/search", method = RequestMethod.POST)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Page<Department> findDepartments(Pageable pageable, @RequestBody QueryFilter[] queryFilters) {
+    public Page<Department> searchDepartmentsByQueryFilters(Pageable pageable, @RequestBody QueryFilter[] queryFilters) {
         LOGGER.debug("Rendering Departments list");
         return departmentService.findAll(queryFilters, pageable);
     }

@@ -90,7 +90,7 @@ public class VacationController {
     @ApiOperation(value = "Returns the list of Vacation instances matching the search criteria.")
     @RequestMapping(value = "/search", method = RequestMethod.POST)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Page<Vacation> findVacations(Pageable pageable, @RequestBody QueryFilter[] queryFilters) {
+    public Page<Vacation> searchVacationsByQueryFilters(Pageable pageable, @RequestBody QueryFilter[] queryFilters) {
         LOGGER.debug("Rendering Vacations list");
         return vacationService.findAll(queryFilters, pageable);
     }

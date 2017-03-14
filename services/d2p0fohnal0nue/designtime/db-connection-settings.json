@@ -1,0 +1,30 @@
+{
+  "password" : "7b6a43524a031230714475312d1633032e795e5f7a4f237d34324f755370485c783a172653",
+  "url" : "jdbc:postgresql://ec2-79-125-6-44.eu-west-1.compute.amazonaws.com:5432/d2p0fohnal0nue?sslmode=require",
+  "driverClass" : "org.postgresql.Driver",
+  "dialect" : "com.wavemaker.runtime.data.dialect.WMPostgresSQLDialect",
+  "serviceId" : "d2p0fohnal0nue",
+  "packageName" : "com.wavemakersample.d2p0fohnal0nue",
+  "dbType" : "PostgreSQL",
+  "host" : "ec2-79-125-6-44.eu-west-1.compute.amazonaws.com",
+  "dbName" : "d2p0fohnal0nue",
+  "port" : "5432",
+  "schemaName" : "public",
+  "tableFilter" : [ ],
+  "schemaFilter" : [ ".*" ],
+  "impersonateUser" : false,
+  "activeDirectoryDomain" : null,
+  "hbm2ddl" : "none",
+  "maxPageSize" : 100,
+  "minPoolSize" : 2,
+  "maxPoolSize" : 4,
+  "dataSourceType" : "WM_MANAGED_DATASOURCE",
+  "jndiName" : "",
+  "reloadInfo" : {
+    "reload" : true,
+    "reason" : "MIGRATION_FAILED",
+    "message" : "Source code generation for Query and Procedure services are updated which requires regeneration of source code."
+  },
+  "readOnly" : false,
+  "username" : "ocdvhwadcxbiuo"
+}

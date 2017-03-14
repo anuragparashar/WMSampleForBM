@@ -1,5 +1,4 @@
 {
-  "username" : "sa",
   "password" : "7b6a43524a78700d662158",
   "url" : "jdbc:hsqldb:file:{WebAppRoot}/WEB-INF/data/hrdb;shutdown=true;ifexists=true;hsqldb.lock_file=false;",
   "driverClass" : "org.hsqldb.jdbcDriver",
@@ -11,18 +10,21 @@
   "dbName" : "hrdb",
   "port" : "",
   "schemaName" : "PUBLIC",
-  "tableFilter" : [ ".*" ],
+  "tableFilter" : [ ],
   "schemaFilter" : [ ".*" ],
   "impersonateUser" : false,
   "activeDirectoryDomain" : "",
   "hbm2ddl" : "none",
   "maxPageSize" : 100,
+  "minPoolSize" : 2,
+  "maxPoolSize" : 4,
   "dataSourceType" : "WM_MANAGED_DATASOURCE",
   "jndiName" : "",
   "reloadInfo" : {
-    "reload" : false,
-    "reason" : null,
-    "message" : null
+    "reload" : true,
+    "reason" : "MIGRATION_FAILED",
+    "message" : "Source code generation for Query and Procedure services are updated which requires regeneration of source code."
   },
-  "readOnly" : true
+  "readOnly" : true,
+  "username" : "sa"
 }

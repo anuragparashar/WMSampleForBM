@@ -13,7 +13,21 @@
             </resource>
             <resource>
                 <filtering>true</filtering>
+                <directory>services/d2p0fohnal0nue/src</directory>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <filtering>true</filtering>
                 <directory>services/hrdb/src</directory>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <filtering>true</filtering>
+                <directory>services/securityService/src</directory>
                 <excludes>
                     <exclude>**/*.java</exclude>
                 </excludes>
@@ -86,7 +100,9 @@
                         </goals>
                         <configuration>
                             <sources>
+                                <source>services/d2p0fohnal0nue/src</source>
                                 <source>services/hrdb/src</source>
+                                <source>services/securityService/src</source>
                             </sources>
                         </configuration>
                     </execution>
@@ -160,7 +176,7 @@
                             <outputDirectory>${basedir}/src/main/webapp/wmapp</outputDirectory>
                             <artifactItems>
                                 <artifactItem>
-                                    <groupId>com.wavemaker.studio</groupId>
+                                    <groupId>com.wavemaker.runtime</groupId>
                                     <artifactId>wavemaker-app-runtime</artifactId>
                                     <version>${wavemaker.studio.version}</version>
                                     <classifier>wmapp</classifier>
@@ -172,7 +188,7 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>com.wavemaker.studio</groupId>
+                <groupId>com.wavemaker.app.build</groupId>
                 <artifactId>wavemaker-app-build-maven-plugin</artifactId>
                 <version>${wavemaker.studio.version}</version>
                 <executions>
@@ -185,29 +201,39 @@
                     </execution>
                 </executions>
             </plugin>
-            
             <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-dependency-plugin</artifactId>
-            <version>2.3</version>
-            <executions>
-                <execution>
-                    <phase>package</phase>
-                    <goals><goal>copy</goal></goals>
-                    <configuration>
-                        <artifactItems>
-                            <artifactItem>
-                                <groupId>com.github.jsimone</groupId>
-                                <artifactId>webapp-runner</artifactId>
-                                <version>8.0.30.2</version>
-                                <destFileName>webapp-runner.jar</destFileName>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.3</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>com.github.jsimone</groupId>
+                                    <artifactId>webapp-runner</artifactId>
+                                    <version>8.0.30.2</version>
+                                    <destFileName>webapp-runner.jar</destFileName>
                             </artifactItem>
                         </artifactItems>
-                    </configuration>
-                </execution>
-            </executions>
-        </plugin>
-            
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.0.1</version>
+                <configuration>
+                    <nonFilteredFileExtensions>
+                        <nonFilteredFileExtension>jks</nonFilteredFileExtension>
+                    </nonFilteredFileExtensions>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
     <profiles>
@@ -221,9 +247,9 @@
             </properties>
         </profile>
         <profile>
-            <id>production</id>
+            <id>deployment</id>
             <properties>
-                <profile.props.file>production.properties</profile.props.file>
+                <profile.props.file>deployment.properties</profile.props.file>
             </properties>
         </profile>
         <profile>
@@ -235,7 +261,7 @@
             </activation>
             <dependencies>
                 <dependency>
-                    <groupId>com.wavemaker.studio</groupId>
+                    <groupId>com.wavemaker.runtime</groupId>
                     <artifactId>wavemaker-app-runtime-core</artifactId>
                     <version>${wavemaker.studio.version}</version>
                 </dependency>
@@ -291,6 +317,11 @@
             <artifactId>hsqldb</artifactId>
             <version>2.3.3</version>
         </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>9.4.1208.jre7</version>
+        </dependency>
     </dependencies>
     <dependencyManagement>
         <dependencies>
@@ -309,7 +340,7 @@
                 <scope>import</scope>
             </dependency>
             <dependency>
-                <groupId>com.wavemaker.studio</groupId>
+                <groupId>com.wavemaker.runtime</groupId>
                 <artifactId>wavemaker-app-runtime</artifactId>
                 <version>${wavemaker.studio.version}</version>
                 <type>pom</type>
@@ -320,7 +351,7 @@
     <properties>
         <profile.props.file>development.properties</profile.props.file>
         <spring.version>4.2.0.RELEASE</spring.version>
-        <spring.security.version>3.2.3.RELEASE</spring.security.version>
-        <wavemaker.studio.version>8.3.3</wavemaker.studio.version>
+        <spring.security.version>4.1.2.RELEASE</spring.security.version>
+        <wavemaker.studio.version>8.4.1.1</wavemaker.studio.version>
     </properties>
 </project>

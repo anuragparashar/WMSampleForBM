@@ -17,8 +17,8 @@
           p:jdbcUrl="${hrdb.url}"
           p:user="${hrdb.username}"
           p:password="${hrdb.password}"
-          p:maxPoolSize="4"
-          p:minPoolSize="2"
+          p:maxPoolSize="${hrdb.maxPoolSize}"
+          p:minPoolSize="${hrdb.minPoolSize}"
           p:maxIdleTime="600"
           p:maxStatements="50"
           p:maxStatementsPerConnection="20"
@@ -91,7 +91,7 @@
         <property name="serviceId" value="hrdb" />
     </bean>
 
-    <bean id="persistentLocalDateTimeType" class="com.wavemaker.studio.common.data.type.WMPersistentLocalDateTime"/>
+    <bean id="persistentLocalDateTimeType" class="com.wavemaker.commons.data.type.WMPersistentLocalDateTime"/>
     <bean id="dateTimeCustomType" class="com.wavemaker.runtime.data.CustomType">
         <property name="type" ref="persistentLocalDateTimeType"/>
         <property name="keys">

@@ -6,7 +6,7 @@
 
 @TypeDefs({@TypeDef(name = "DateTime",
                      defaultForType = org.joda.time.LocalDateTime.class,
-                     typeClass = com.wavemaker.studio.common.data.type.WMPersistentLocalDateTime.class)})
+                     typeClass = com.wavemaker.commons.data.type.WMPersistentLocalDateTime.class)})
 package com.hrdb;
 
 import org.hibernate.annotations.TypeDefs;

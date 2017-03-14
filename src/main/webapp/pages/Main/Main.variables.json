@@ -17,7 +17,7 @@
     "autoUpdate" : true,
     "transformationRequired" : false,
     "liveSource" : "hrdb",
-    "ignoreCase" : false,
+    "ignoreCase" : true,
     "matchMode" : "start",
     "propertiesMap" : {
       "columns" : [ {

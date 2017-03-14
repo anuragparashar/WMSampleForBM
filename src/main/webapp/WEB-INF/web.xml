@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns="http://java.sun.com/xml/ns/javaee"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          version="2.5">
 
@@ -21,14 +21,14 @@
 
     <servlet>
         <servlet-name>prefabs</servlet-name>
-        <servlet-class>com.wavemaker.studio.prefab.web.PrefabControllerServlet</servlet-class>
+        <servlet-class>com.wavemaker.runtime.prefab.web.PrefabControllerServlet</servlet-class>
         <init-param>
             <param-name>contextClass</param-name>
             <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
         </init-param>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>com.wavemaker.studio.prefab.config.PrefabServletConfig</param-value>
+            <param-value>com.wavemaker.runtime.prefab.config.PrefabServletConfig</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
@@ -90,17 +90,18 @@
         <url-pattern>/prefabs/*</url-pattern>
     </servlet-mapping>
 
-    <!--
-      Loads the root application context of this web app at startup.
-      The application context is then available via 
-      WebApplicationContextUtils.getWebApplicationContext(ServletContext).
-    -->
 
+    <listener>
+        <listener-class>com.wavemaker.runtime.web.listener.LoggingInitializationListener</listener-class>
+    </listener>
     <listener>
         <listener-class>com.wavemaker.runtime.server.CleanupListener</listener-class>
     </listener>
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
     </listener>
 
     <!--
@@ -128,7 +129,7 @@
 
     <filter>
         <filter-name>etagFilter</filter-name>
-        <filter-class>com.wavemaker.studio.common.web.filter.EtagFilter</filter-class>
+        <filter-class>com.wavemaker.commons.web.filter.EtagFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>etagFilter</filter-name>

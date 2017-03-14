@@ -91,7 +91,7 @@ public class EmployeeController {
     @ApiOperation(value = "Returns the list of Employee instances matching the search criteria.")
     @RequestMapping(value = "/search", method = RequestMethod.POST)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Page<Employee> findEmployees(Pageable pageable, @RequestBody QueryFilter[] queryFilters) {
+    public Page<Employee> searchEmployeesByQueryFilters(Pageable pageable, @RequestBody QueryFilter[] queryFilters) {
         LOGGER.debug("Rendering Employees list");
         return employeeService.findAll(queryFilters, pageable);
     }
